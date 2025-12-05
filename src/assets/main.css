@@ -1,0 +1,30 @@
+@import './base.css';
+
+#app {
+  min-height: 100dvh;
+}
+
+.flex-al-center {
+  display: flex;
+  align-items: center;
+}
+
+.flex-jus-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.border {
+  border: 2px solid rgb(214, 133, 26);
+}
+
+p {
+  color: var(--gray-500);
+}
+
+@media (hover: hover) {
+}
+
+@media (min-width: 1024px) {
+}

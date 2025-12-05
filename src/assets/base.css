@@ -1,0 +1,96 @@
+:root {
+  --white: hsl(0, 0%, 99%);
+  --gray-400: hsl(0, 0%, 75%);
+  --gray-500: hsl(257, 7%, 63%);
+  --gray-900: hsl(255, 11%, 22%);
+  --gray-950: hsl(260, 8%, 14%);
+
+  --blue-400: hsl(180, 66%, 49%);
+  --red-400: hsl(0, 87%, 67%);
+  --purple-950: hsl(257, 27%, 26%);
+
+  --weight-500: 500;
+  --weight-700: 700;
+
+  --fs-400: 1.125rem;
+  --fs-450: 1.5rem;
+  --fs-500: 1.75rem;
+  --fs-700: 2rem;
+  --fs-800: 3rem;
+
+  --spacing-100: 1rem;
+  --spacing-200: 2rem;
+  --spacing-300: 3rem;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+* {
+  margin: 0;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    interpolate-size: allow-keywords;
+  }
+}
+
+body {
+  line-height: 1.5;
+  font-family: 'Poppins', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  font-size: var(--fs-400);
+  font-weight: var(--weight-500);
+  background-color: var(--white);
+}
+
+img,
+picture,
+video,
+canvas,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  overflow-wrap: break-word;
+}
+
+p {
+  text-wrap: pretty;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  text-wrap: balance;
+}
+
+#root,
+#__next {
+  isolation: isolate;
+}
+
+li {
+  list-style: none;
+}
