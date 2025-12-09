@@ -1,6 +1,7 @@
 <script setup>
 import NavBar from './components/NavBar.vue'
 import FooterBar from './components/FooterBar.vue'
+import Banner from './components/Banner.vue'
 </script>
 
 <template>
@@ -9,7 +10,7 @@ import FooterBar from './components/FooterBar.vue'
   </header>
 
   <main></main>
-
+  <Banner />
   <FooterBar />
 </template>
 

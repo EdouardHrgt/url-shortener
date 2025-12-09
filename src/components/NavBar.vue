@@ -101,7 +101,7 @@ li[data-signUp='true'] {
 
 @media (hover: hover) {
   li:not([data-signUp]):hover {
-    color: var(--gray-900);
+    color: var(--gray-400);
   }
   li[data-signUp='true']:hover {
     background-color: var(--blue-400-o);
@@ -147,5 +147,11 @@ li[data-signUp='true'] {
     justify-content: flex-end;
     gap: var(--spacing-200);
   }
+  @media (hover: hover) {
+  li:not([data-signUp]):hover {
+    color: var(--gray-900);
+  }
+
+}
 }
 </style>

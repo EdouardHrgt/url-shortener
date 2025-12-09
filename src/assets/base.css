@@ -7,9 +7,10 @@
   --gray-950: hsl(260, 8%, 14%);
 
   --blue-400: hsl(180, 66%, 49%);
-  --blue-400-o: hsl(180, 66%, 49%, 0.6);
+  --blue-400-o: hsl(180, 66%, 69%);
   --red-400: hsl(0, 87%, 67%);
   --purple-950: hsl(257, 27%, 26%);
+  --purple-600: hsl(257, 27%, 56%);
 
   --weight-500: 500;
   --weight-700: 700;
@@ -23,6 +24,7 @@
   --spacing-100: 1rem;
   --spacing-150: 1.5rem;
   --spacing-200: 2rem;
+  --spacing-250: 2rem;
   --spacing-300: 3rem;
   --spacing-500: 5rem;
 }
