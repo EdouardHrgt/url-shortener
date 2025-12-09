@@ -16,7 +16,7 @@ import FooterBar from './components/FooterBar.vue'
 <style scoped>
 header,
 main {
-  padding-inline: 5rem;
+  padding-inline: var(--spacing-500);
 }
 
 @media (min-width: 1024px) {
