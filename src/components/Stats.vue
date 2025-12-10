@@ -23,7 +23,7 @@ const list = [
 
 <template>
   <section class="">
-    <div class="">
+    <div class="label">
       <h2 class="">Advanced Statistics</h2>
       <p class="">
         Track how your links are performing across the web with our advanced statistics dashboard.
@@ -32,19 +32,82 @@ const list = [
 
     <ul class="">
       <li v-for="el in list" :key="el.label">
-        <div v-html="el.icon"></div>
+        <div v-html="el.icon" class="ul-icon"></div>
         <h3 class="">{{ el.label }}</h3>
         <p class="">{{ el.text }}</p>
       </li>
+      <span class="bar"></span>
     </ul>
   </section>
 </template>
 
 <style scoped>
-
 section {
-    background-color: var(--gray-400);
+  background-color: var(--purple-100);
+  padding-inline: var(--spacing-500);
+  padding-block: calc(var(--spacing-500) * 1.5);
 }
+
+h2,
+h3 {
+  color: var(--gray-950);
+}
+
+h2 {
+  font-weight: var(--weight-700);
+  font-size: var(--fs-500);
+  margin-bottom: var(--spacing-100);
+}
+
+.label {
+  text-align: center;
+  margin-bottom: var(--spacing-300);
+}
+
+ul {
+  padding: 0;
+  text-align: center;
+  position: relative;
+  isolation: isolate;
+}
+
+ul li {
+  background-color: var(--white);
+  border-radius: 8px;
+  padding: var(--spacing-150);
+  margin-block: 6rem;
+  position: relative;
+}
+
+ul li:last-of-type {
+  margin-bottom: 0;
+}
+
+.ul-icon {
+  margin-inline: auto;
+  background-color: var(--purple-950);
+  border-radius: 999px;
+  width: fit-content;
+  padding: var(--spacing-150);
+  margin-top: -70px;
+}
+
+li h3 {
+  margin-bottom: var(--spacing-100);
+  margin-top: var(--spacing-200);
+}
+
+ul .bar {
+  background-color: var(--blue-400);
+  width: 0.75rem;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  transform: translateX(-50%);
+  left: 50%;
+  z-index: -1;
+}
+
 @media (min-width: 1024px) {
 }
 

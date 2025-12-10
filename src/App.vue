@@ -2,6 +2,7 @@
 import NavBar from './components/NavBar.vue'
 import FooterBar from './components/FooterBar.vue'
 import Banner from './components/Banner.vue'
+import Stats from './components/Stats.vue'
 </script>
 
 <template>
@@ -9,14 +10,15 @@ import Banner from './components/Banner.vue'
     <NavBar />
   </header>
 
-  <main></main>
+  <main>
+    <Stats />
+  </main>
   <Banner />
   <FooterBar />
 </template>
 
 <style scoped>
-header,
-main {
+header {
   padding-inline: var(--spacing-500);
 }
 

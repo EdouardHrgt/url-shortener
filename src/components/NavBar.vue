@@ -6,18 +6,22 @@ const isOpen = ref(false)
 <template>
   <div class="container | flex-al-center">
     <img src="/images/logo.svg" alt="Shortly" />
-    <img
-      v-if="!isOpen"
-      src="/images/burger-menu.png"
-      alt="open navigation menu"
-      class="burger"
-      @click="isOpen = true" />
-    <img
-      v-if="isOpen"
-      src="/images/close-icon.png"
-      alt="close navigation menu"
-      class="burger close"
-      @click="isOpen = false" />
+    <Transition name="burger-rotate" mode="out-in">
+      <img
+        v-if="!isOpen"
+        key="burger"
+        src="/images/burger-menu.png"
+        alt="open navigation menu"
+        class="burger"
+        @click="isOpen = true" />
+      <img
+        v-else
+        key="close"
+        src="/images/close-icon.png"
+        alt="close navigation menu"
+        class="burger close"
+        @click="isOpen = false" />
+    </Transition>
     <nav class="flex-al-center" :class="{ 'nav-active': isOpen }">
       <ul class="navigation | flex-al-center">
         <li>Features</li>
@@ -148,10 +152,27 @@ li[data-signUp='true'] {
     gap: var(--spacing-200);
   }
   @media (hover: hover) {
-  li:not([data-signUp]):hover {
-    color: var(--gray-900);
+    li:not([data-signUp]):hover {
+      color: var(--gray-900);
+    }
   }
-
 }
+
+.burger-rotate-enter-active,
+.burger-rotate-leave-active {
+  transition: all 0.4s ease;
+}
+
+.burger-rotate-enter-from {
+  transform: rotate(-90deg);
+}
+
+.burger-rotate-leave-to {
+  transform: rotate(-90deg);
+}
+
+.burger-rotate-enter-to,
+.burger-rotate-leave-from {
+  transform: rotate(0deg);
 }
 </style>
