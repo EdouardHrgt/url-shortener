@@ -3,6 +3,7 @@ import NavBar from './components/NavBar.vue'
 import FooterBar from './components/FooterBar.vue'
 import Banner from './components/Banner.vue'
 import Stats from './components/Stats.vue'
+import TitleBar from './components/TitleBar.vue'
 </script>
 
 <template>
@@ -11,6 +12,7 @@ import Stats from './components/Stats.vue'
   </header>
 
   <main>
+    <TitleBar />
     <Stats />
   </main>
   <Banner />

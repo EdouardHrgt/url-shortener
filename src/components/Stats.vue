@@ -109,8 +109,41 @@ ul .bar {
 }
 
 @media (min-width: 1024px) {
+  ul {
+    display: flex;
+    flex: 1;
+    gap: var(--spacing-200);
+    justify-content: center;
+    align-items: flex-start
+  }
+  ul li:last-of-type {
+    margin-bottom: 0;
+    margin-top: calc(var(--spacing-300) * 2);
+  }
+  ul li:nth-of-type(2) {
+    margin-top: var(--spacing-300);
+  }
+
+  ul li {
+    max-width: 450px;
+    margin-block: 0rem;
+  }
+
+  .label {
+    margin-bottom: var(--spacing-500);
+    max-width: 530px;
+    margin-inline: auto;
+  }
+
+  ul .bar {
+    width: calc(450px + 6rem);
+    position: absolute;
+    top: 50%;
+    left: auto;
+    bottom: auto;
+    transform: translateY(-50%);
+    height: 0.75rem;
+  }
 }
 
-@media (min-width: 800px) {
-}
 </style>
