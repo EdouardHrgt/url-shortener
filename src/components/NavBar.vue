@@ -1,5 +1,6 @@
 <script setup>
 import { ref } from 'vue'
+
 const isOpen = ref(false)
 </script>
 
@@ -22,6 +23,7 @@ const isOpen = ref(false)
         class="burger close"
         @click="isOpen = false" />
     </Transition>
+    <div v-if="isOpen" class="overlay" @click="isOpen = false"></div>
     <nav class="flex-al-center" :class="{ 'nav-active': isOpen }">
       <ul class="navigation | flex-al-center">
         <li>Features</li>
@@ -49,6 +51,19 @@ const isOpen = ref(false)
   width: 22px;
   cursor: pointer;
   opacity: 0.4;
+  position: relative;
+  z-index: 1001;
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background-color: rgba(12, 4, 24, 0.5);
+  z-index: 999;
+  touch-action: none;
 }
 
 nav {
@@ -113,6 +128,10 @@ li[data-signUp='true'] {
 }
 
 @media (min-width: 900px) {
+  .overlay {
+    display: none;
+  }
+  
   nav {
     position: static;
     flex-direction: row;

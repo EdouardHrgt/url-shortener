@@ -1,44 +1,53 @@
 <script setup>
 import { ref } from 'vue'
+import Clipboards from './Clipboards.vue'
+
 const url = ref('')
 const error = ref(false)
-const clipboard = ref(false)
-const shortenUrl = ref('')
+const errorMessage = ref('')
+const urls = ref([])
 
 const submitForm = () => {
   if (url.value.length <= 0) {
     error.value = true
+    errorMessage.value = 'please provide a valid URL!'
+  } else if (urls.value.includes(url.value)) {
+    error.value = true
+    errorMessage.value = 'This URL has already been added!'
   } else {
     error.value = false
-    // SHORTEN THE URL THEN ADD IT TO USER'S CLIPBOPARD
-    clipboard.value = true
-    setTimeout(() => {
-      clipboard.value = false
-    }, 2000)
+    errorMessage.value = ''
+    urls.value.push(url.value)
+    url.value = ''
+  }
+}
+
+const removeUrl = (urlToRemove) => {
+  const index = urls.value.indexOf(urlToRemove)
+  if (index > -1) {
+    urls.value.splice(index, 1)
   }
 }
 </script>
 
 <template>
-  <div>
+  <div class="wrapper">
     <form @submit.prevent="submitForm">
       <input type="url" name="url" id="url" placeholder="Shorten a link here..." v-model="url" />
       <input type="submit" value="Shorten it!" />
-      <p class="error" v-if="error">please provide a valid URL!</p>
-      <Transition name="scale">
-        <span class="clipboard" v-if="clipboard">
-          <p>The URL : {{ shortenUrl }} has been copied to your clipboard!</p>
-        </span>
-      </Transition>
+      <p class="error" v-if="error">{{ errorMessage }}</p>
     </form>
+    <div class="clipboard-wrapper">
+      <Clipboards :urls="urls" @remove-url="removeUrl" />
+    </div>
   </div>
 </template>
 
 <style scoped>
-div {
+.wrapper {
   padding-inline: var(--spacing-500);
   position: relative;
-  background: linear-gradient(to bottom, var(--white) 50%, var(--purple-100) 50%);
+  background-color: var(--purple-100);
 }
 
 form {
@@ -48,7 +57,9 @@ form {
   background-position: top right;
   border-radius: 12px;
   padding: var(--spacing-150);
+  margin-bottom: -4rem;
   position: relative;
+  top: -82px;
 }
 
 form > * {
@@ -83,55 +94,6 @@ form input[type='submit'] {
   width: 100%;
 }
 
-.clipboard {
-  position: absolute;
-  background-color: var(--white);
-  inset: 1rem;
-  border-radius: 12px;
-  width: calc(100% - 2rem);
-  display: grid;
-  place-content: center;
-  transition: 0.4s ease;
-  transform-origin: center;
-  display: block;
-}
-
-.clipboard p {
-  color: var(--purple-600);
-  font-size: var(--fs-450);
-  text-align: center;
-}
-
-.scale-enter-active {
-  animation: scaleIn 0.3s ease-out;
-}
-
-.scale-leave-active {
-  animation: scaleOut 0.3s ease-in forwards;
-}
-
-@keyframes scaleIn {
-  from {
-    transform: scale(0);
-    opacity: 0;
-  }
-  to {
-    transform: scale(1);
-    opacity: 1;
-  }
-}
-
-@keyframes scaleOut {
-  from {
-    transform: scale(1);
-    opacity: 1;
-  }
-  to {
-    transform: scale(0);
-    opacity: 0;
-  }
-}
-
 @media (hover: hover) {
   form input[type='submit']:hover {
     background-color: var(--blue-400-o);
@@ -148,10 +110,15 @@ form input[type='submit'] {
     align-items: center;
     gap: var(--spacing-200);
     padding-block: var(--spacing-250);
+    top: -65px;
+    margin-bottom: -3.5rem;
   }
   form input[type='submit'] {
     margin-top: 0;
     max-width: 20rem;
+  }
+  .error {
+    bottom: 7px;
   }
 }
 </style>

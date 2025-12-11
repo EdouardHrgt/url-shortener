@@ -20,6 +20,7 @@
 <style scoped>
 .container {
   padding-inline: var(--spacing-500);
+  margin-bottom: 8rem;
 }
 
 h1 {
@@ -58,6 +59,7 @@ h1 {
     align-items: start;
     padding-block: var(--spacing-500);
     justify-content: space-between;
+    margin-bottom: 5rem;
   }
 
   .icon {
